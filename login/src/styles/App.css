@@ -56,8 +56,7 @@ body,
 .login-input::-webkit-input-placeholder {
   text-align: left;
   font-size: 15px;
-  color: #4e5785;
-  padding-left: 10px;
+  color: #54586e63;
 }
 
 #login-button {
