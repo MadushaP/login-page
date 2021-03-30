@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import Dashboard from './Dashboard';
 import PrivateRoute from './PrivateRoute';
-import { useState, useEffect } from 'react';
-
+import { useState } from 'react';
 
 
 const App = () => {

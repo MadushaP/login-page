@@ -96,6 +96,11 @@ body,
   transition: all 0.25s;
 }
 
+#login-button:disabled {
+  background-color: #a8aab6;
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
