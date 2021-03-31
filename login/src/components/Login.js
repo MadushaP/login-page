@@ -3,25 +3,43 @@ import { useHistory } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 const Login = (props) => {
-    const history = useHistory();
+    const history = useHistory()
+    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [buttonDisable, setButtonDisable] = useState(true)
+    const [errorText, setErrorText] = useState('')
+
     const signIn = (setAuth) => {
-        fetch('api/authenticate/')
+
+        fetch('api/authenticate/', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: username, password: password })
+        })
             .then(res => res.json())
             .then(data => {
-                setAuth(data.response)
-                history.push("/Dashboard");
+                if (data.response) {
+                    setAuth(data.response)
+                    history.push("/Dashboard");
+                } else {
+                    setErrorText('Incorrect username or password')
+                    setPassword('')
+                    setUsername('')
+                   console.log('error')
+                }
             })
     }
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [buttonDisable, setButtonDisable] = useState(true);
+
 
 
     useEffect(() => {
-        if (username.length > 0 && password.length > 0 )
+        if (username.length > 0 && password.length > 0)
             setButtonDisable(false)
 
-        if (username.length === 0 || password.length === 0 )
+        if (username.length === 0 || password.length === 0)
             setButtonDisable(true)
     }, [username, password])
 
@@ -38,9 +56,10 @@ const Login = (props) => {
                 name="Password"
                 className="login-input"
                 value={password}
-                placeholder="Password" 
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)} />
             <button id="login-button" disabled={buttonDisable} onClick={() => signIn(props.setAuth)}>Sign In</button>
+            <div id="error-text">{errorText}</div>
         </div>
     );
 }

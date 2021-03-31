@@ -20,7 +20,7 @@ body,
 
 #container {
   width: 500px;
-  height: 300px;
+  height: 325px;
   border-radius: 20px;
   position: relative;
   left: 50%;
@@ -100,6 +100,13 @@ body,
   background-color: #a8aab6;
 }
 
+#error-text {
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(202, 3, 3);
+  font-size: 15px;
+
+}
 
 @keyframes fadeIn {
   from {
