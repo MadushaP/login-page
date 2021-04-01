@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={() => <Login setAuth={setAuth}/>}/>
+        <Route exact path="/" component={() => <Login authenticated={authenticated} setAuth={setAuth}/>}/>
         <PrivateRoute authed={authenticated}  path="/Dashboard" component={Dashboard}/>
       </Switch>
     </Router>

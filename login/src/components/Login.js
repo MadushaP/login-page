@@ -10,7 +10,6 @@ const Login = (props) => {
     const [errorText, setErrorText] = useState('')
 
     const signIn = (setAuth) => {
-
         fetch('api/authenticate/', {
             method: 'POST',
             headers: {
@@ -32,8 +31,6 @@ const Login = (props) => {
                 }
             })
     }
-
-
 
     useEffect(() => {
         if (username.length > 0 && password.length > 0)
